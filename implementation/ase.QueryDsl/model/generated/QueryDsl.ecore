@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="queryDsl" nsURI="http://www.QueryDsl.ase" nsPrefix="queryDsl">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="queryType" upperBound="-1"
+        eType="#//QueryType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QueryType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Select" eSuperTypes="#//QueryType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectMedicalRecord" eSuperTypes="#//Select">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableMedicalRecord"
+        unique="false" upperBound="-1" eType="#//VariableMedicalRecord"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableMedicalRecordNext"
+        unique="false" upperBound="-1" eType="#//VariableMedicalRecord"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="where" upperBound="-1"
+        eType="#//WhereMedicalRecord" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectPatientMonitoring" eSuperTypes="#//Select">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variablePatientMonitoring"
+        eType="#//VariablePatientMonitoring"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variablePatientMonitoringNext"
+        unique="false" upperBound="-1" eType="#//VariablePatientMonitoring"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="where" upperBound="-1"
+        eType="#//WherePatientMonitoring" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectPrescription" eSuperTypes="#//Select">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variablePrescription" eType="#//VariablePrescription"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variablePrescriptionNext"
+        unique="false" upperBound="-1" eType="#//VariablePrescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="where" upperBound="-1"
+        eType="#//WherePrescription" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Insert" eSuperTypes="#//QueryType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InsertMedicalRecord" eSuperTypes="#//Insert">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recordId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patientId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doctorId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="medicalCondition" eType="#//MedicalCondition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InsertPatientMonitoring" eSuperTypes="#//Insert">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="monitoringId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patientId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" eType="#//MedicalCondition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="riskPerception" eType="#//RiskPerception"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="treadted" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deviceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InsertPrescription" eSuperTypes="#//Insert">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prescriptionId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recordId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="medicationName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ordered" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Drop" eSuperTypes="#//QueryType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="table_name" unique="false"
+        upperBound="-1" eType="#//TableName"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Delete" eSuperTypes="#//QueryType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DeleteMedicalRecord" eSuperTypes="#//Delete">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="whereMedicalRecord" upperBound="-1"
+        eType="#//WhereMedicalRecord" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeletePatientMonitoring" eSuperTypes="#//Delete">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wherepatientMonitoring"
+        upperBound="-1" eType="#//WherePatientMonitoring" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeletePrescription" eSuperTypes="#//Delete">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="whereprescription" upperBound="-1"
+        eType="#//WherePrescription" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WhereMedicalRecord">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recordId" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patientId" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doctorId" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="medicalCondition" unique="false"
+        upperBound="-1" eType="#//MedicalCondition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WherePatientMonitoring">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="monitoringId" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patientId" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" unique="false"
+        upperBound="-1" eType="#//MedicalCondition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="riskperception" unique="false"
+        upperBound="-1" eType="#//RiskPerception"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="treated" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deviceId" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WherePrescription">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prescriptionId" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recordId" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="medicationName" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ordered" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TableName">
+    <eLiterals name="MedicalRecord" literal="MedicalRecord"/>
+    <eLiterals name="PatientMonitoring" value="1" literal="PatientMonitoring"/>
+    <eLiterals name="Prescription" value="2" literal="Prescription"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VariableMedicalRecord">
+    <eLiterals name="recordId" literal="recordId"/>
+    <eLiterals name="patientId" value="1" literal="patientId"/>
+    <eLiterals name="doctorId" value="2" literal="doctorId"/>
+    <eLiterals name="medicalCondition" value="3" literal="medicalCondition"/>
+    <eLiterals name="date" value="4" literal="date"/>
+    <eLiterals name="price" value="5" literal="price"/>
+    <eLiterals name="description" value="6" literal="description"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VariablePatientMonitoring">
+    <eLiterals name="monitoringId" literal="monitoringId"/>
+    <eLiterals name="patientId" value="1" literal="patientId"/>
+    <eLiterals name="category" value="2" literal="category"/>
+    <eLiterals name="date" value="3" literal="date"/>
+    <eLiterals name="riskPerception" value="4" literal="riskPerception"/>
+    <eLiterals name="treated" value="5" literal="treated"/>
+    <eLiterals name="deviceId" value="6" literal="deviceId"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VariablePrescription">
+    <eLiterals name="prescriptionId" literal="prescriptionId"/>
+    <eLiterals name="recordId" value="1" literal="recordId"/>
+    <eLiterals name="medicationName" value="2" literal="medicationName"/>
+    <eLiterals name="start" value="3" literal="start"/>
+    <eLiterals name="end" value="4" literal="end"/>
+    <eLiterals name="ordered" value="5" literal="ordered"/>
+    <eLiterals name="price" value="6" literal="price"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MedicalCondition">
+    <eLiterals name="Bronchitis" literal="Bronchitis"/>
+    <eLiterals name="Asthma" value="1" literal="Asthma"/>
+    <eLiterals name="Diabetes" value="2" literal="Diabetes"/>
+    <eLiterals name="Flu" value="3" literal="Flu"/>
+    <eLiterals name="Hypertension" value="4" literal="Hypertension"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RiskPerception">
+    <eLiterals name="High" literal="High"/>
+    <eLiterals name="Medium" value="1" literal="Medium"/>
+    <eLiterals name="Low" value="2" literal="Low"/>
+  </eClassifiers>
+</ecore:EPackage>

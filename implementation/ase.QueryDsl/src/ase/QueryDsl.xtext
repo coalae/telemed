@@ -1,0 +1,201 @@
+grammar ase.QueryDsl with org.eclipse.xtext.common.Terminals
+
+generate queryDsl "http://www.QueryDsl.ase"
+
+Model:
+	(queryType += QueryType)*
+;
+
+QueryType:
+	Select | Insert | Drop | Delete
+;
+	
+//-------------Select--------------------
+Select:
+	'SELECT' 
+	(SelectMedicalRecord | SelectPatientMonitoring | SelectPrescription)
+	
+;
+
+SelectMedicalRecord:
+	variableMedicalRecord+=VariableMedicalRecord 
+	(',' variableMedicalRecordNext+=VariableMedicalRecord)* 
+	'From' 'MedicalRecord'
+	('WHERE' (where+=WhereMedicalRecord)+)? 
+	';'
+;
+
+SelectPatientMonitoring:
+	variablePatientMonitoring=VariablePatientMonitoring 
+	(',' variablePatientMonitoringNext+=VariablePatientMonitoring)* 
+	'From' 'PatientMonitoring' 
+	('WHERE' (where+=WherePatientMonitoring)+)?
+	';'
+;
+
+SelectPrescription:
+	variablePrescription=VariablePrescription 
+	(',' variablePrescriptionNext+=VariablePrescription)* 
+	'From' 'Prescription' 
+	('WHERE' (where+=WherePrescription)+)?
+	';'
+;
+
+//-------------Insert--------------------
+Insert:
+	'INSERT' 'INTO' 
+	(InsertMedicalRecord | InsertPatientMonitoring | InsertPrescription) 
+	
+;
+
+InsertMedicalRecord:
+	'MedicalRecord'
+	'Values(' 	recordId=INT ',' 
+				patientId=INT ',' 
+				doctorId=INT ',' 
+				medicalCondition=MedicalCondition ','
+				date=DATE ','
+				price=DOUBLE ','
+				description=STRING
+	')' ';'
+;
+
+InsertPatientMonitoring:
+	'PatientMonitoring' 
+	'Values(' 	monitoringId=INT ','
+				patientId=INT ','
+				category=MedicalCondition ','
+				date=DATE ','
+				riskPerception=RiskPerception ','
+				treadted=BOOLEAN ','
+				deviceId=INT
+	')' ';'
+;
+
+InsertPrescription:
+	'Prescription'
+	'Values(' 	prescriptionId=INT ','
+				recordId=INT ','
+				medicationName=STRING ','
+				start=DATE ','
+				end=DATE ','
+				ordered=BOOLEAN ','
+				price=DOUBLE
+	')' ';'
+;
+
+
+//-------------Drop--------------------
+Drop:
+	'DROP' 'TABLE' 
+	table_name+=TableName 
+	';'
+;
+
+//-------------Delete--------------------
+Delete:
+	'DELETE' 'FROM' 
+	(DeleteMedicalRecord | DeletePatientMonitoring | DeletePrescription)
+;
+DeleteMedicalRecord:
+	 'MedicalRecord' 'WHERE' 
+	 whereMedicalRecord+=WhereMedicalRecord ('and' whereMedicalRecord+=WhereMedicalRecord)*
+	 ';'
+;
+
+DeletePatientMonitoring:
+	'PatientMonitoring' 'WHERE' 
+	wherepatientMonitoring+=WherePatientMonitoring ('and' wherepatientMonitoring+=WherePatientMonitoring)*
+	';'
+;
+
+DeletePrescription:
+	'Prescription' 'WHERE' 
+	whereprescription+=WherePrescription ('and' whereprescription+=WherePrescription)*
+	';'
+;
+
+//-------------Where--------------------
+WhereMedicalRecord:
+	(('recordId' '=' recordId+=INT) | 
+	('patientId' '=' patientId+=INT) |
+	('doctorId' '=' doctorId+=INT) |
+	('medicalCondition' '=' medicalCondition+=MedicalCondition) |
+	('date' '=' date+=DATE) |
+	('price' '=' price+=DOUBLE) | 
+	('description' '=' description+=STRING)) 
+;
+
+WherePatientMonitoring:
+	(('monitoringId' '=' monitoringId+=INT) | 
+	('patientId' '=' patientId+=INT) |
+	('category' '=' category+=MedicalCondition) |
+	('date' '=' date+=DATE) |
+	('riskPerception' '=' riskperception+=RiskPerception) | 
+	('treated' '=' treated+=BOOLEAN) |
+	('deviceId' '=' deviceId+=INT))
+;
+
+WherePrescription:
+	(('prescriptionId' '=' prescriptionId+=INT) | 
+	('recordId' '=' recordId+=INT) |
+	('medicationName' '=' medicationName+=STRING) |
+	('start' '=' start+=DATE) |
+	('end' '=' end+=DATE) | 
+	('ordered' '=' ordered+=BOOLEAN) |
+	('price' '=' price+=DOUBLE))
+;
+
+
+//-------------Enums--------------------
+enum TableName:
+	MedicalRecord | PatientMonitoring | Prescription
+;
+
+enum VariableMedicalRecord:
+	recordId | patientId | doctorId | medicalCondition | date | price | description  
+;
+
+enum VariablePatientMonitoring:
+	monitoringId | patientId | category | date | riskPerception | treated | deviceId
+;
+
+enum VariablePrescription:
+	prescriptionId | recordId | medicationName | start | end | ordered | price
+;
+
+enum MedicalCondition:
+	Bronchitis | Asthma | Diabetes | Flu | Hypertension
+;
+
+enum RiskPerception:
+	High | Medium | Low
+;
+
+
+//-------------Terminal--------------------
+terminal DATE:
+	DAY'.'MONTH'.'YEAR
+;
+
+terminal DAY:
+	('1'..'9') | (('1'..'3')('0'..'9'))
+;
+
+terminal MONTH:
+	'Jan'|'Feb'|'Mar'|'Apr'|'May'|'Jun'|'Jul'|'Aug'|'Sep'|'Oct'|'Nov'|'Dec'
+;
+
+terminal YEAR:
+	('0'..'2')('0'..'9')('0'..'9')('0'..'9')
+;
+
+terminal DOUBLE:
+	INT '.' INT
+;
+
+terminal BOOLEAN:
+	'true'|'false'
+;
+
+	

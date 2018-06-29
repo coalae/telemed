@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ase.QueryDsl.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: ase.QueryDsl.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: ase.QueryDsl,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: ase.ide.contentassist.antlr.internal,
+ ase.ide.contentassist.antlr
+

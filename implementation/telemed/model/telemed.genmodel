@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/telemed/src-gen" creationIcons="false" editDirectory="/telemed.edit/src-gen"
+    editorDirectory="/telemed.editor/src-gen" modelPluginID="telemed" modelName="Telemed"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>telemed.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Telemed" disposableProviderFactory="true" ecorePackage="telemed.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="telemed.ecore#//Gender">
+      <genEnumLiterals ecoreEnumLiteral="telemed.ecore#//Gender/Female"/>
+      <genEnumLiterals ecoreEnumLiteral="telemed.ecore#//Gender/Male"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="telemed.ecore#//MedicalCondition">
+      <genEnumLiterals ecoreEnumLiteral="telemed.ecore#//MedicalCondition/Bronchitis"/>
+      <genEnumLiterals ecoreEnumLiteral="telemed.ecore#//MedicalCondition/Asthma"/>
+      <genEnumLiterals ecoreEnumLiteral="telemed.ecore#//MedicalCondition/Diabetes"/>
+      <genEnumLiterals ecoreEnumLiteral="telemed.ecore#//MedicalCondition/Flu"/>
+      <genEnumLiterals ecoreEnumLiteral="telemed.ecore#//MedicalCondition/Hypertension"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="telemed.ecore#//RiskPerception">
+      <genEnumLiterals ecoreEnumLiteral="telemed.ecore#//RiskPerception/High"/>
+      <genEnumLiterals ecoreEnumLiteral="telemed.ecore#//RiskPerception/Medium"/>
+      <genEnumLiterals ecoreEnumLiteral="telemed.ecore#//RiskPerception/Low"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="telemed.ecore#//DeviceType">
+      <genEnumLiterals ecoreEnumLiteral="telemed.ecore#//DeviceType/Sensor"/>
+      <genEnumLiterals ecoreEnumLiteral="telemed.ecore#//DeviceType/FixedPlacement"/>
+      <genEnumLiterals ecoreEnumLiteral="telemed.ecore#//DeviceType/Wearable"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="telemed.ecore#//Calendar"/>
+    <genClasses image="false" ecoreClass="telemed.ecore#//User">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//User/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//User/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//User/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//User/city"/>
+    </genClasses>
+    <genClasses ecoreClass="telemed.ecore#//Patient">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Patient/firstname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Patient/lastname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Patient/svnr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Patient/weight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Patient/height"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Patient/gender"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Patient/birthdate"/>
+    </genClasses>
+    <genClasses ecoreClass="telemed.ecore#//Doctor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Doctor/firstname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Doctor/lastname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Doctor/clinic"/>
+    </genClasses>
+    <genClasses ecoreClass="telemed.ecore#//MedicalRecord">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//MedicalRecord/recordId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//MedicalRecord/patientId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//MedicalRecord/doctorId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//MedicalRecord/medicalCondition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference telemed.ecore#//MedicalRecord/prescription"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference telemed.ecore#//MedicalRecord/invoice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//MedicalRecord/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//MedicalRecord/price"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//MedicalRecord/description"/>
+    </genClasses>
+    <genClasses ecoreClass="telemed.ecore#//Prescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Prescription/prescriptionId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Prescription/recordId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Prescription/medicationName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Prescription/start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Prescription/end"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Prescription/ordered"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Prescription/price"/>
+    </genClasses>
+    <genClasses ecoreClass="telemed.ecore#//Invoice">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Invoice/invoiceID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Invoice/patientId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Invoice/invoiceDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Invoice/dueDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Invoice/price"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Invoice/creditorId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Invoice/topic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Invoice/paid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Invoice/paidDate"/>
+    </genClasses>
+    <genClasses ecoreClass="telemed.ecore#//NationalHealthOrganization">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//NationalHealthOrganization/contact"/>
+    </genClasses>
+    <genClasses ecoreClass="telemed.ecore#//Pharmacy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Pharmacy/name"/>
+    </genClasses>
+    <genClasses ecoreClass="telemed.ecore#//PatientMonitoring">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//PatientMonitoring/monitoringId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//PatientMonitoring/patientId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//PatientMonitoring/category"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//PatientMonitoring/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//PatientMonitoring/riskPerception"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//PatientMonitoring/treated"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//PatientMonitoring/deviceId"/>
+    </genClasses>
+    <genClasses ecoreClass="telemed.ecore#//Device">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Device/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Device/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Device/patientId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Device/medicalRecordId"/>
+    </genClasses>
+    <genClasses ecoreClass="telemed.ecore#//Insurance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//Insurance/department"/>
+    </genClasses>
+    <genClasses ecoreClass="telemed.ecore#//AnonymizedDataQuery">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//AnonymizedDataQuery/gender"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//AnonymizedDataQuery/medicalCondition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//AnonymizedDataQuery/height"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//AnonymizedDataQuery/weight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//AnonymizedDataQuery/city"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute telemed.ecore#//AnonymizedDataQuery/birthYear"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

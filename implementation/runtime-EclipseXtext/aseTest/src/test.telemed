@@ -1,0 +1,17 @@
+SELECT recordId,patientId,doctorId From MedicalRecord;
+SELECT prescriptionId,price From Prescription;
+SELECT monitoringId,patientId,category From PatientMonitoring WHERE riskPerception=High;
+
+INSERT INTO MedicalRecord Values(1, 45, 56, Asthma, 23.Apr.1995, 20.3, "Therapy");
+INSERT INTO PatientMonitoring Values(60, 70, Bronchitis, 23.Aug.2004,High,true,60);
+INSERT INTO Prescription Values(1, 2, "medicine", 1.Aug.1994, 2.Apr.2018, false, 20.35);
+
+DROP TABLE MedicalRecord;
+DROP TABLE Prescription;
+DROP TABLE PatientMonitoring;
+
+SELECT recordId,patientId,doctorId From MedicalRecord WHERE doctorId=1 medicalCondition=Diabetes;
+DELETE FROM PatientMonitoring WHERE deviceId=2;
+DELETE FROM MedicalRecord WHERE medicalCondition=Hypertension;
+DELETE FROM Prescription WHERE medicationName="medicine";
+
